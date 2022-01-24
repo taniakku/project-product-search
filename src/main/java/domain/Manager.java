@@ -9,6 +9,11 @@ public class Manager {
         this.repository = repository;
     }
 
+    public void add(Product item) {
+        repository.save(item);
+
+    }
+
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product : repository.findAll()) {
