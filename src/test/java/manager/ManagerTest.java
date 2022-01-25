@@ -1,5 +1,8 @@
-package domain;
+package manager;
 
+import domain.Book;
+import domain.Product;
+import domain.Smartphone;
 import manager.Manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
