@@ -1,10 +1,9 @@
 package domain;
 
+import Manager.Manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.ProductRepository;
-import domain.Book;
-import domain.Product;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,26 +14,20 @@ class ManagerTest {
     Product second = new Book(2, "Silmarillion", 600, "J. R. Tolkien");
     Product third = new Smartphone(31, "Super Mega Zoom 2000", 900, "Noname");
     Product fourth = new Smartphone(32, "The Best Pokemon Catcher", 950, "Noname");
-    Product fifth = new Smartphone (33, "Brick", 300, "Klokia");
+    Product fifth = new Smartphone(33, "Brick", 300, "Klokia");
 
 
-//    @BeforeEach
-//    public void setUp() {
-//        repository.save(first);
-//        repository.save(second);
-//        repository.save(third);
-//        repository.save(fourth);
-//        repository.save(fifth);
-//    }
+    @BeforeEach
+    public void setUp() {
+        manager.add(first);
+        manager.add(second);
+        manager.add(third);
+        manager.add(fourth);
+        manager.add(fifth);
+    }
 
     @Test
     void shouldSearchBookByName() {
-
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
 
         Product[] expected = {first};
         Product[] actual = manager.searchBy("Harry Potter");
@@ -47,11 +40,6 @@ class ManagerTest {
     @Test
     void shouldSearchBookByAuthor() {
 
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
 
         Product[] expected = {second};
         Product[] actual = manager.searchBy("Tolkien");
@@ -61,12 +49,6 @@ class ManagerTest {
 
     @Test
     void shouldSearchSmartphoneByName() {
-
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
 
         Product[] expected = {fourth};
         Product[] actual = manager.searchBy("Pokemon");
@@ -78,12 +60,6 @@ class ManagerTest {
     @Test
     void shouldSearchSmartphoneByOtherName() {
 
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
-
         Product[] expected = {third};
         Product[] actual = manager.searchBy("Mega Zoom");
 
@@ -94,12 +70,6 @@ class ManagerTest {
     @Test
     void shouldSearchSmartphoneByBrand() {
 
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
-
         Product[] expected = {third, fourth};
         Product[] actual = manager.searchBy("Noname");
 
@@ -108,15 +78,8 @@ class ManagerTest {
     }
 
 
-
     @Test
     void shouldSearchSmartphoneByOtherBrand() {
-
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
 
         Product[] expected = {fifth};
         Product[] actual = manager.searchBy("Klokia");
@@ -127,12 +90,6 @@ class ManagerTest {
 
     @Test
     void shouldSearchSmartphoneByOtherOtherName() {
-
-        manager.add (first);
-        manager.add (second);
-        manager.add (third);
-        manager.add (fourth);
-        manager.add (fifth);
 
         Product[] expected = {fifth};
         Product[] actual = manager.searchBy("Brick");
