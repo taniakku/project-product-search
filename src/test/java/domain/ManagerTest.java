@@ -1,6 +1,6 @@
 package domain;
 
-import Manager.Manager;
+import manager.Manager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.ProductRepository;
